@@ -53,7 +53,7 @@ const Excerpt = styled.p`
 const Card = props => {
   return (
     <Post>
-      <Link to={`/${props.slug}/`}>
+      <Link to={`/${props.locale}/${props.slug}/`}>
         <Img sizes={props.image.sizes} backgroundColor={'#eeeeee'} />
         <Title>{props.title}</Title>
         <Date>{props.date}</Date>

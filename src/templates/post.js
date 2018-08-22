@@ -14,6 +14,7 @@ const PostTemplate = ({ data }) => {
   const {
     title,
     slug,
+    node_locale,
     id,
     heroImage,
     body,
@@ -40,18 +41,19 @@ const PostTemplate = ({ data }) => {
         {tags && <TagList tags={tags} />}
         <PostDate date={publishDate} />
         <PageBody body={body} />
-        <PostLinks previous={postIndex.previous} next={postIndex.next} />
+        <PostLinks locale={node_locale} previous={postIndex.previous} next={postIndex.next} />
       </Container>
     </div>
   )
 }
 
 export const query = graphql`
-  query postQuery($slug: String!) {
-    contentfulPost(slug: { eq: $slug }) {
+  query postQuery($slug: String! $locale:String!) {
+    contentfulPost(slug: { eq: $slug } node_locale: { eq: $locale }) {
       title
       id
-      slug
+      slug   
+      node_locale  
       metaDescription {
         internal {
           content
@@ -63,6 +65,7 @@ export const query = graphql`
         title
         id
         slug
+        node_locale
       }
       heroImage {
         title
@@ -85,6 +88,7 @@ export const query = graphql`
     allContentfulPost(
       limit: 1000
       sort: { fields: [publishDate], order: DESC }
+      filter: { node_locale: { eq: $locale } }
     ) {
       edges {
         node {

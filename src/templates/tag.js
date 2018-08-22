@@ -31,6 +31,7 @@ const TagTemplate = ({ data }) => {
             <Card
               key={post.id}
               slug={post.slug}
+              locale={post.node_locale}
               image={post.heroImage}
               title={post.title}
               date={post.publishDate}
@@ -44,8 +45,8 @@ const TagTemplate = ({ data }) => {
 }
 
 export const query = graphql`
-  query tagQuery($slug: String!) {
-    contentfulTag(slug: { eq: $slug }) {
+  query tagQuery($slug: String! $locale:String!) {
+    contentfulTag(slug: { eq: $slug } node_locale: { eq: $locale }) {
       title
       id
       slug
@@ -53,6 +54,7 @@ export const query = graphql`
         id
         title
         slug
+        node_locale
         publishDate(formatString: "MMMM DD, YYYY")
         heroImage {
           title

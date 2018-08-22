@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
+import SelectLanguage from './SelectLanguage';
 
 const Header = styled.header`
   background: ${props => props.theme.colors.base};
@@ -44,7 +45,7 @@ const activeLinkStyle = {
   color: 'white',
 }
 
-const Menu = () => {
+const Menu = (props) => {
   return (
     <Header>
       <Nav>
@@ -66,6 +67,7 @@ const Menu = () => {
           </li>
         </ul>
       </Nav>
+      <SelectLanguage langs={props.langs} />
     </Header>
   )
 }

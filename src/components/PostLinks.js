@@ -34,9 +34,9 @@ const PostLinks = props => {
   return (
     <Wrapper>
       {props.previous && (
-        <PreviousLink to={`/${props.previous.slug}/`}>Prev Post</PreviousLink>
+        <PreviousLink to={`/${props.locale}/${props.previous.slug}/`}>Prev Post</PreviousLink>
       )}
-      {props.next && <NextLink to={`/${props.next.slug}/`}>Next Post</NextLink>}
+      {props.next && <NextLink to={`/${props.locale}/${props.next.slug}/`}>Next Post</NextLink>}
     </Wrapper>
   )
 }

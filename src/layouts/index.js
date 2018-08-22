@@ -7,9 +7,36 @@ import theme from '../styles/theme'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
 import favicon from '../images/favicon.ico'
+import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import 'intl';
 
-const Template = ({ children }) => {
+
+import en from 'react-intl/locale-data/en';
+import 'intl/locale-data/jsonp/en';
+import ml from 'react-intl/locale-data/ml';
+import 'intl/locale-data/jsonp/ml';
+
+// add concatenated locale data
+addLocaleData([...en, ...ml]);
+
+const Template = ({ children, data, location }) => {
+  const url = location.pathname;
+  const { langs, defaultLangKey } = data.site.siteMetadata.languages;
+  const langKey = getCurrentLangKey(langs, defaultLangKey, url);
+  const homeLink = `/${langKey}/`;
+  const langsMenu = getLangs(langs, langKey, getUrlForLang(homeLink, url));
+
+  // get the appropriate message file based on langKey
+  // at the moment this assumes that langKey will provide us
+  // with the appropriate language code
+  const i18nMessages = require(`../data/messages/${langKey}`);
+
   return (
+    <IntlProvider
+      locale={langKey}
+      messages={i18nMessages}
+    >
     <div className="siteRoot">
       <Helmet>
         <title>{config.siteTitle}</title>
@@ -26,7 +53,7 @@ const Template = ({ children }) => {
 
       <ThemeProvider theme={theme}>
         <div className="siteContent">
-          <Menu />
+          <Menu langs={langsMenu} />
           {children()}
         </div>
       </ThemeProvider>
@@ -35,7 +62,22 @@ const Template = ({ children }) => {
         <Footer />
       </ThemeProvider>
     </div>
+    </IntlProvider>
   )
 }
 
 export default Template
+
+export const pageQuery = graphql`
+  query Layout {
+    site {
+      siteMetadata {
+        languages {
+          defaultLangKey
+          langs
+        }
+      }
+    }
+  }
+`;
+

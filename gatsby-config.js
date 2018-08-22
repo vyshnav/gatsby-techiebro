@@ -1,4 +1,5 @@
 const config = require('./src/utils/siteConfig')
+const languages = require('./src/data/languages');
 let contentfulConfig
 
 try {
@@ -19,6 +20,7 @@ try {
 
 module.exports = {
   siteMetadata: {
+    languages,
     siteUrl: config.siteUrl,
     rssMetadata: {
       site_url: config.siteUrl,
@@ -56,6 +58,14 @@ module.exports = {
           },
         ],
       },
+    },
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyForNull: 'any',
+        langKeyDefault: languages.defaultLangKey,
+        useLangKeyLayout: false
+      }
     },
     {
       resolve: 'gatsby-source-contentful',

@@ -10,6 +10,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           edges {
             node {
               slug
+              node_locale
             }
           }
         }
@@ -17,10 +18,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     `).then(result => {
       result.data.allContentfulPost.edges.map(({ node }) => {
         createPage({
-          path: `${node.slug}/`,
+          path: `/${node.node_locale}/${node.slug}/`,
           component: path.resolve(`./src/templates/post.js`),
           context: {
             slug: node.slug,
+            locale: node.node_locale,
           },
         })
       })
@@ -35,6 +37,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           edges {
             node {
               slug
+              node_locale
             }
           }
         }
@@ -42,7 +45,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     `).then(result => {
       result.data.allContentfulPage.edges.map(({ node }) => {
         createPage({
-          path: `${node.slug}/`,
+          path: `/${node.node_locale}/${node.slug}/`,
           component: path.resolve(`./src/templates/page.js`),
           context: {
             slug: node.slug,
@@ -60,6 +63,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           edges {
             node {
               slug
+              node_locale
             }
           }
         }
@@ -67,10 +71,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     `).then(result => {
       result.data.allContentfulTag.edges.map(({ node }) => {
         createPage({
-          path: `tag/${node.slug}/`,
+          path: `/${node.node_locale}/tag/${node.slug}/`,
           component: path.resolve(`./src/templates/tag.js`),
           context: {
             slug: node.slug,
+            locale: node.node_locale,
           },
         })
       })

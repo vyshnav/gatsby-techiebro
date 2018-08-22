@@ -1,5 +1,5 @@
 module.exports = {
-  siteTitle: 'Techie Bro - tech news',
+  siteTitle: 'Techie Bro',
   siteTitleAlt: 'Technology news in malayalam', // This allows an alternative site title for SEO schema.
   publisher: 'Techie Bro', // Organization name used for SEO schema
   siteDescription:
@@ -8,7 +8,7 @@ module.exports = {
   author: 'Techie Bro', // Author for RSS author segment and SEO schema
   authorUrl: 'https://techiebro.ml/about/', // URL used for author and publisher schema, can be a social profile or other personal site
   userTwitter: '@twitter', // Change for Twitter Cards
-  shortTitle: 'Techie Bro App', // Used for App manifest e.g. Mobile Home Screen
+  shortTitle: 'Techie Bro', // Used for App manifest e.g. Mobile Home Screen
   shareImage: '/logos/logo-512.png', // Open Graph Default Share Image. 1200x1200 is recommended
   shareImageWidth: 900, // Change to the width of your default share image
   shareImageHeight: 600, // Change to the height of your default share image

@@ -1,87 +1,44 @@
-import React from 'react'
-import CardList from '../components/CardList'
-import Card from '../components/Card'
-import Container from '../components/Container'
-import PageTitle from '../components/PageTitle'
-import SEO from '../components/SEO'
+import React from 'react';
+import graphql from 'graphql';
+import { getUserLangKey } from 'ptz-i18n';
+import { withPrefix } from "gatsby-link";
 
-const Index = ({ data }) => {
-  const posts = data.allContentfulPost.edges
+class RedirectIndex extends React.PureComponent {
+  constructor(args) {
+    super(args);
 
-  return (
-    <div>
-      <SEO />
-      <Container>
-        <PageTitle small>
-          <a
-            href="https://www.gatsbyjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Gatsby
-          </a>,{' '}
-          <a
-            href="https://www.contentful.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contentful
-          </a>{' '}
-          and{' '}
-          <a
-            href="https://www.netlify.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Netlify
-          </a>{' '}
-          <span>🎉</span>
-        </PageTitle>
-        <CardList>
-          {posts.map(({ node: post }) => (
-            <Card
-              key={post.id}
-              slug={post.slug}
-              image={post.heroImage}
-              title={post.title}
-              date={post.publishDate}
-              excerpt={post.body}
-            />
-          ))}
-        </CardList>
-      </Container>
-    </div>
-  )
+    // Skip build, Browsers only
+    if (typeof window !== 'undefined') {
+      const { langs, defaultLangKey } = args.data.site.siteMetadata.languages;
+      const langKey = getUserLangKey(langs, defaultLangKey);
+      const homeUrl = withPrefix(`/${langKey}/`);
+
+      // I don`t think this is the best solution
+      // I would like to use Gatsby Redirects like:
+      // https://github.com/gatsbyjs/gatsby/tree/master/examples/using-redirects
+      // But Gatsby Redirects are static, they need to be specified at build time,
+      // This redirect is dynamic, It needs to know the user browser language.
+      // Any ideias? Join the issue: https://github.com/angeloocana/gatsby-starter-default-i18n/issues/4
+      window.___history.replace(homeUrl);
+    }
+  }
+
+  render() {
+    return (<div />);
+  }
 }
 
-export const query = graphql`
-  query indexQuery {
-    allContentfulPost(
-      limit: 1000
-      sort: { fields: [publishDate], order: DESC }
-    ) {
-      edges {
-        node {
-          title
-          id
-          slug
-          publishDate(formatString: "MMMM DD, YYYY")
-          heroImage {
-            title
-            sizes(maxWidth: 1800) {
-              ...GatsbyContentfulSizes_withWebp_noBase64
-            }
-          }
-          body {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 80)
-            }
-          }
+export default RedirectIndex;
+
+export const pageQuery = graphql`
+  query IndexQuery {
+    site{
+      siteMetadata{
+        languages {
+          defaultLangKey
+          langs
         }
       }
     }
   }
-`
-
-export default Index
+`;
