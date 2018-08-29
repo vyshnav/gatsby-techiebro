@@ -32,6 +32,9 @@ const Template = ({ children, data, location }) => {
   // with the appropriate language code
   const i18nMessages = require(`../data/messages/${langKey}`);
 
+
+  const { appId }= data.site.siteMetadata.facebook;
+
   return (
     <IntlProvider
       locale={langKey}
@@ -49,6 +52,7 @@ const Template = ({ children, data, location }) => {
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={config.siteTitle} />
+        <meta property="fb:app_id" content={appId} />
       </Helmet>
 
       <ThemeProvider theme={theme}>
@@ -75,6 +79,9 @@ export const pageQuery = graphql`
         languages {
           defaultLangKey
           langs
+        }
+        facebook {
+          appId
         }
       }
     }

@@ -7,6 +7,7 @@ import Container from '../components/Container'
 import PageBody from '../components/PageBody'
 import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
+import PostComments from "../components/PostComments";
 import PostDate from '../components/PostDate'
 import SEO from '../components/SEO'
 
@@ -28,6 +29,8 @@ const PostTemplate = ({ data }) => {
     ({ node: post }) => post.id === id
   )
 
+  const facebook = (((data || {}).site || {}).siteMetadata || {}).facebook;
+  
   return (
     <div>
       <Helmet>
@@ -41,6 +44,7 @@ const PostTemplate = ({ data }) => {
         {tags && <TagList tags={tags} />}
         <PostDate date={publishDate} />
         <PageBody body={body} />
+        <PostComments slug={slug} facebook={facebook} />
         <PostLinks locale={node_locale} previous={postIndex.previous} next={postIndex.next} />
       </Container>
     </div>
@@ -99,6 +103,13 @@ export const query = graphql`
         }
         next {
           slug
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        facebook {
+          appId
         }
       }
     }

@@ -27,14 +27,15 @@
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-transformer-remark": "^1.7.44",
     "inquirer": "^6.0.0",
+    "intl": "^1.2.5",
     "lodash": "^4.17.10",
     "path": "^0.12.7",
     "prismjs": "^1.15.0",
+    "react-facebook": "^5.0.3",
     "react-helmet": "^5.2.0",
+    "react-intl": "^2.4.0",
     "styled-components": "^3.3.2",
-    "whatwg-fetch": "^2.0.4",
-    "intl": "^1.2.5",
-    "react-intl": "^2.4.0"
+    "whatwg-fetch": "^2.0.4"
   },
   "keywords": [
     "gatsby"

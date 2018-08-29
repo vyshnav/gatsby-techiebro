@@ -137,6 +137,7 @@ class SEO extends Component {
         <meta property="og:image:width" content={imgWidth} />
         <meta property="og:image:height" content={imgHeight} />
         <meta property="og:description" content={description} />
+        
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
