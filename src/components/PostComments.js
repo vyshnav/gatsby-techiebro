@@ -10,14 +10,15 @@ import config from '../utils/siteConfig'
 const Wrapper = styled.div` 
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidthCentered};
-
+  
   .fb-comments {      
     span{
       background-image: url(${comments});
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 30%;
-      display:block;
+      background-size: contain;
+      display: block;
+      min-height: 200px;
     } 
     
   }
@@ -25,8 +26,14 @@ const Wrapper = styled.div`
     span{
       background-image: none;
       padding: 0;
+      min-height: 0;
+    }
+
+        
   }
 `
+
+
 
 class PostComments extends React.Component {
 
@@ -50,14 +57,14 @@ class PostComments extends React.Component {
     const props = this.props;
     return (
 
-    <Wrapper>      
+    <Wrapper className="facebook-container">      
         <FacebookProvider appId={props.facebook}>
         <Comments
           href={`${config.siteUrl}${props.slug}`}
           width="100%"
           colorScheme={theme.colors.fbCommentsColorscheme}
         />
-      </FacebookProvider>     
+      </FacebookProvider>        
     </Wrapper>
   );
   }
