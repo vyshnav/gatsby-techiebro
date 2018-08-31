@@ -1,12 +1,14 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
+import 'semantic-ui-css/semantic.min.css'
 import config from '../utils/siteConfig'
 import '../styles/global'
 import theme from '../styles/theme'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
-import favicon from '../images/favicon.ico'
+import favicon from '../images/favicon.png'
+
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import 'intl';

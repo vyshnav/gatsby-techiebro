@@ -95,4 +95,23 @@ injectGlobal`
   	width: 100%;
   	height: auto;
   }
+  .card__image{
+    height: 100%;
+
+  }
+  .ui.items>.item{
+    min-height: 6.5rem;
+    padding: 0!important;
+    .content{
+      padding: 1rem!important;
+    }
+  }
+
+
+
+  @media only screen and (max-width: 767px){
+    .ui.items>.item>.content>.description{
+      display:none !important;
+    }
+  }
 `

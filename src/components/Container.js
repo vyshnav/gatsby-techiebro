@@ -4,7 +4,11 @@ import styled from 'styled-components'
 const Wrapper = styled.section`
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidth};
-  padding: 3em 1.5em 2em;
+  padding: 1.5rem 0;
+
+  @media (min-width: 40rem) {
+    padding: 2rem 1rem 1.5rem; 
+  }
 `
 
 const Container = props => {

@@ -7,7 +7,7 @@ const theme = {
     fbCommentsColorscheme: "light",
   },
   sizes: {
-    maxWidth: '1200px',
+    maxWidth: '1200px',        
     maxWidthCentered: '650px',
   },
   responsive: {
