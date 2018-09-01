@@ -16,14 +16,14 @@ const BgImg = styled(Img)`
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 200px;
+  min-height: 300px;
 
   height: auto;
   @media (min-width: ${props => props.theme.responsive.small}) {
     height: ${props => props.height || 'auto'};   
   }
-  @media (max-width: ${props => props.theme.responsive.medium}) {
-    height: ${props => props.height || 'auto'};
+  @media (max-width: ${props => props.theme.responsive.medium}) {  
+    min-height: 200px; 
     max-height: 200px;
   }
   & > img {
@@ -43,39 +43,37 @@ const BgImg = styled(Img)`
     z-index: 1;
   }
 `
+const HeaderBlock = styled.div`
+    padding: 1rem 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(180deg,transparent 0,rgba(0,0,0,.65) 70%);
+    z-index: 1;
+`
 const TbHeader = styled(Header)`
   margin: 0 auto !important;
-  margin-bottom: 10px !important
   max-width: ${props => props.theme.sizes.maxWidthCentered};
-
   font-size: 1.67rem !important;
-  text-transform: capitalize;
-  font-weight: 600;
-  position: absolute;
-  width: 100%;
-  
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%,-20%);
-  text-align: left;  
-  color: #ffffff !important;
-  z-index: 1;
+  text-transform: capitalize !important;
+  font-weight: 600; 
+  color: #ffffff !important;  
   @media only screen and (max-width: 700px){
-    padding: 0 1rem !important;
+    padding: 0 1rem 1rem!important;
   }
 
   @media screen and (min-width: 830px){
     font-size: 2.5rem !important;
   }
-  
 ` 
 
 
 
 const Hero = (props) => (
   <Wrapper>
-    <BgImg height={props.height} sizes={props.image.sizes} backgroundColor={'#eeeeee'} />    
-    <TbHeader as='h1'>{props.title}</TbHeader>
+    <BgImg height={props.height} sizes={props.image.sizes} backgroundColor={'#eeeeee'} />   
+    <HeaderBlock><TbHeader as='h1'>{props.title}</TbHeader></HeaderBlock> 
+    
   </Wrapper>
 )
 
