@@ -103,13 +103,24 @@ injectGlobal`
     min-height: 6.5rem;
     padding: 0!important;
     .content{
+      position: relative;
       padding: 1rem!important;
     }
   }
 
+  .ui.items>.item .meta{
+    position: absolute;
+    bottom: 10px;
+    font-size: .7rem;
+  }
+
+
 
 
   @media only screen and (max-width: 767px){
+    .ui.items>.item>.content>.header{
+      margin-bottom: 35px;
+    }
     .ui.items>.item>.content>.description{
       display:none !important;
     }
