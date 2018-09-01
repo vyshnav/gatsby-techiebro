@@ -4,15 +4,20 @@ import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Hero from '../components/Hero'
 import styled from 'styled-components'
-import Container from '../components/Container'
+// import Container from '../components/Container'
 import PageBody from '../components/PageBody'
 import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
 import PostComments from "../components/PostComments";
 import PostDate from '../components/PostDate'
 import SEO from '../components/SEO'
+import { Container } from 'semantic-ui-react'
 
 
+const PostContainer= styled(Container)`
+padding: 1.5rem 0;
+
+`
 
 const PostTemplate = ({ data }) => {
   const {
@@ -45,13 +50,13 @@ const PostTemplate = ({ data }) => {
 
      
 
-      <Container>
+      <PostContainer>
         {tags && <TagList tags={tags} />}       
         <PostDate date={publishDate} />
         <PageBody body={body} />
         <PostComments slug={slug} facebook={facebook} />
         <PostLinks locale={node_locale} previous={postIndex.previous} next={postIndex.next} />
-      </Container>
+      </PostContainer>
     </div>
   )
 }

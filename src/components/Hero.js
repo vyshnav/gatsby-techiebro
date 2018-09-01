@@ -52,6 +52,10 @@ const TbHeader = styled(Header)`
   text-align: left;  
   color: #ffffff !important;
   z-index: 1;
+  @media only screen and (max-width: 700px){
+    padding: 0 1rem !important;
+  }
+  
 ` 
 
 
