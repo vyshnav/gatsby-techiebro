@@ -43,6 +43,7 @@ module.exports = {
                 siteUrl: config.siteUrl,
             },
         },
+        `gatsby-plugin-react-next`,
         'gatsby-plugin-styled-components',
         'gatsby-plugin-react-helmet',
         {

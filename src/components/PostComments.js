@@ -7,6 +7,10 @@ import CommentsLoader from "../components/CommentsLoader";
 import comments from '../images/comments.gif'
 import config from '../utils/siteConfig'
 
+
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
+
 const Wrapper = styled.div` 
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidthCentered};
@@ -36,23 +40,6 @@ const Wrapper = styled.div`
 
 
 class PostComments extends React.Component {
-
-  constructor() {
-    super()
-    this.state = { loading:true}
-  }
-  
-
-  componentWillMount() {     
-    console.log("componentwillMount");
-    this.state = { loading:true}   
-  }
-
-  componentDidMount() {
-    console.log("componentDidMount");
-    setTimeout(() => this.setState({loading: false}))
-  }
-
   render() {
     const props = this.props;
     return (
@@ -64,7 +51,7 @@ class PostComments extends React.Component {
           width="100%"
           colorScheme={theme.colors.fbCommentsColorscheme}
         />
-      </FacebookProvider>        
+      </FacebookProvider> 
     </Wrapper>
   );
   }

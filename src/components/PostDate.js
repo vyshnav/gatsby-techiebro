@@ -1,25 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
-  margin: 0 auto 2em;
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
-`
 
 const Date = styled.p`
-  display: inline-block;
-  span {
-    font-weight: 600;
+  display: block;  
+  font-size: .75rem!important;
+  color: #999!important;
+  margin: 0 auto !important;
+  max-width: ${props => props.theme.sizes.maxWidthCentered};
+
+  @media only screen and (max-width: 700px){
+    padding: 0 1rem !important;
   }
 `
 
 const PostDate = props => {
-  return (
-    <Wrapper>
+  return (   
       <Date>
-        <span>Published:</span> {props.date}
-      </Date>
-    </Wrapper>
+        Posted on {props.date}
+      </Date>   
   )
 }
 

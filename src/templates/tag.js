@@ -3,7 +3,7 @@ import sortBy from 'lodash/sortBy'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Card from '../components/Card'
-import CardList from '../components/CardList'
+import { Item } from 'semantic-ui-react'
 import PageTitle from '../components/PageTitle'
 import Container from '../components/Container'
 
@@ -24,9 +24,9 @@ const TagTemplate = ({ data }) => {
       </Helmet>
 
       <Container>
-        <PageTitle small>Tag: &ldquo;{title}&rdquo;</PageTitle>
+        <PageTitle small>#{title}</PageTitle>
 
-        <CardList>
+         <Item.Group link divided unstackable>
           {posts.map(post => (
             <Card
               key={post.id}
@@ -38,7 +38,7 @@ const TagTemplate = ({ data }) => {
               excerpt={post.body}
             />
           ))}
-        </CardList>
+        </Item.Group>    
       </Container>
     </div>
   )

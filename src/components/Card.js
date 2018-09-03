@@ -2,15 +2,13 @@ import React from 'react'
 import { Item } from 'semantic-ui-react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
-
-
+import styled from 'styled-components'
 
 const Card = props => {
   return (  
+    <Item as={ Link } to={`/${props.locale}/${props.slug}/`}> 
 
-  
-
-    <Item as={ Link } to={`/${props.locale}/${props.slug}/`}>      
+            
         <Item.Image size="medium">
         <Img  outerWrapperClassName='card__image'
               sizes={props.image.sizes}
@@ -28,10 +26,10 @@ const Card = props => {
                   __html: props.excerpt.childMarkdownRemark.excerpt,
                 }}
               >
-            </Item.Description>            
-            <Item.Meta content={props.date} />
-        </Item.Content>      
-    </Item> 
+            </Item.Description>                
+        </Item.Content>       
+    </Item>   
+
   )
 }
 

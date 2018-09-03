@@ -125,4 +125,15 @@ injectGlobal`
       display:none !important;
     }
   }
+
+
+.fade-transition{
+    
+    transition: opacity 500ms ease-in;
+}
+.fade-entering,
+.fade-exiting{
+    opacity: 0;
+}
+
 `

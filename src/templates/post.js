@@ -9,7 +9,7 @@ import PageBody from '../components/PageBody'
 import TagList from '../components/TagList'
 import PostLinks from '../components/PostLinks'
 import PostComments from "../components/PostComments";
-import PostDate from '../components/PostDate'
+
 import SEO from '../components/SEO'
 import { Container } from 'semantic-ui-react'
 
@@ -46,13 +46,12 @@ const PostTemplate = ({ data }) => {
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
 
-      <Hero title={title} image={heroImage} height={'50vh'} />
+      <Hero title={title} date={publishDate} image={heroImage} height={'50vh'} />
 
      
 
       <PostContainer>
-        {tags && <TagList tags={tags} />}       
-        <PostDate date={publishDate} />
+        {tags && <TagList tags={tags} />}          
         <PageBody body={body} />
         <PostComments slug={slug} facebook={facebook} />
         <PostLinks locale={node_locale} previous={postIndex.previous} next={postIndex.next} />

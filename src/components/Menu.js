@@ -45,13 +45,13 @@ const activeLinkStyle = {
   color: 'white',
 }
 
-const Menu = (props) => {
+const HederMenu = (props) => {
   return (
     <Header>
       <Nav>
         <ul>
           <li>
-            <Link to="/" exact activeStyle={activeLinkStyle}>
+            <Link to={props.home} exact activeStyle={activeLinkStyle}>
               Home
             </Link>
           </li>
@@ -67,9 +67,11 @@ const Menu = (props) => {
           </li>
         </ul>
       </Nav>
-      <SelectLanguage langs={props.langs} />
     </Header>
   )
 }
 
-export default Menu
+export default HederMenu
+
+
+

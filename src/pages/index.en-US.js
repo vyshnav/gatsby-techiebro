@@ -1,34 +1,51 @@
 import React from 'react'
 import { Item } from 'semantic-ui-react'
-import CardList from '../components/CardList'
 import Card from '../components/Card'
 import Container from '../components/Container'
-import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
+import { TransitionGroup, Transition } from 'react-transition-group';
 
-const Index = ({ data }) => {
-  const posts = data.allContentfulPost.edges
+class Index extends React.Component{
+ constructor(props) {
+  super(props);
+  console.log(this.props);
+  const posts = this.props.data.allContentfulPost.edges
+  this.state = { posts};
 
+  
+  console.log(this.state.posts);
+}    
+ 
+ 
+
+ render() {
   return (
     <div>
       <SEO />
-      <Container>        
-        <Item.Group link divided unstackable>
-          {posts.map(({ node: post }) => (
-            <Card
-              key={post.id}
-              locale={post.node_locale}
-              slug={post.slug}
-              image={post.heroImage}
-              title={post.title}
-              date={post.publishDate}
-              excerpt={post.body}
-            />
+      <Container>  
+   
+      
+        <Item.Group link divided unstackable>   
+          {this.state.posts.map(({ node: post} , index) => (                        
+                           <Card 
+                                          key={ post.id }
+                                          locale={post.node_locale}
+                                          slug={post.slug}
+                                          image={post.heroImage}
+                                          title={post.title}
+                                          date={post.publishDate}
+                                          excerpt={post.body}
+                                          index={index}
+                                        />    
+
           ))}
-       </Item.Group>       
+          </Item.Group>
+       
       </Container>
+
     </div>
   )
+  }
 }
 
 export const query = graphql`

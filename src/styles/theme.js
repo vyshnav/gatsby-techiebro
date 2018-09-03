@@ -1,4 +1,4 @@
-const theme = {
+const sitetheme = {
   colors: {
     base: '#121212', // Black
     secondary: '#e9e9e9', // Medium Gray
@@ -15,6 +15,10 @@ const theme = {
     medium: '50em',
     large: '70em',
   },
+  mediaQueryTresholds: {
+    M: 600,
+    L: 1024
+  },
 }
 
-export default theme
+export default sitetheme

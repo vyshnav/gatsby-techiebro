@@ -1,3 +1,3 @@
 module.exports = {
-  'selectLanguage': 'നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക'
+  'selectLanguage': 'ഭാഷ തിരഞ്ഞെടുക്കുക'
 };

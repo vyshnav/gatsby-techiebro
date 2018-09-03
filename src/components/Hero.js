@@ -1,7 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-
+import PostDate from '../components/PostDate'
 import { Header } from 'semantic-ui-react'
 
 const Wrapper = styled.section`
@@ -59,7 +59,7 @@ const TbHeader = styled(Header)`
   font-weight: 600; 
   color: #ffffff !important;  
   @media only screen and (max-width: 700px){
-    padding: 0 1rem 1rem!important;
+    padding: 0 1rem !important;
   }
 
   @media screen and (min-width: 830px){
@@ -72,7 +72,10 @@ const TbHeader = styled(Header)`
 const Hero = (props) => (
   <Wrapper>
     <BgImg height={props.height} sizes={props.image.sizes} backgroundColor={'#eeeeee'} />   
-    <HeaderBlock><TbHeader as='h1'>{props.title}</TbHeader></HeaderBlock> 
+    <HeaderBlock>
+      <TbHeader as='h1'>{props.title}</TbHeader>
+      <PostDate date={props.date} />
+    </HeaderBlock> 
     
   </Wrapper>
 )
